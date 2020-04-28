@@ -1,10 +1,7 @@
 from builtins import print
-from math import *
-from random import *
 import numpy as np
 import csv
 import matplotlib.pyplot as plt
-from matplotlib import animation
 from sympy import *
 from sympy.abc import i
 
@@ -39,18 +36,11 @@ def h(x):
     return thetas[0] + x*thetas[1]
 
 
-def update():
-    return
-    # for t in thetas:
-        # print(X.transpose().dot(X)*X.dot(Y))
-
-
 def cost():
     return 0.5 * Sum(thetas[0] + thetas[1]*X[i], (i, 0, len(X) - 1))
 
 
-def animate(i):
-    update()
+def graph():
     plt.cla()
     plt.scatter(heights, weights)
     plt.plot((0, max(heights)), (thetas[0], h(max(heights))))
@@ -93,7 +83,8 @@ thetas[1] = thetavec[1]
 fig = plt.figure()
 plt.xlabel("Bream height")
 plt.ylabel("Bream weight")
-ani = animation.FuncAnimation(fig, animate, interval=250)
+graph()
+
+plt.xlim([10, 20])
+plt.ylim([0, 1250])
 plt.show()
-
-
